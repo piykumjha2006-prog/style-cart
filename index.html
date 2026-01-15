@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleCart - Fashion Blog</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        /* Smooth fade in for images */
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white selection:bg-rose-100 selection:text-rose-900">
+
+    <!-- CONFIGURATION -->
+    <!-- You can change links and prices here in the HTML -->
+    <script>
+        const PRODUCT_LINK = "https://amzn.to/4pyTfnv";
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="text-2xl font-serif font-bold tracking-tighter text-rose-500">
+                Lumina<span class="text-slate-800">Style.</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+                <a href="#gallery" class="hover:text-rose-500 transition">Gallery</a>
+                <a href="#details" class="hover:text-rose-500 transition">Details</a>
+                <a href="#reviews" class="hover:text-rose-500 transition">Reviews</a>
+            </div>
+
+            <a href="https://amzn.to/4pyTfnv" target="_blank" class="hidden md:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-slate-800 transition transform hover:-translate-y-0.5 shadow-lg">
+                <!-- Shopping Bag Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span>Buy Now</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-slate-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#gallery" class="mobile-link text-lg font-medium">Gallery</a>
+                <a href="#details" class="mobile-link text-lg font-medium">Details</a>
+                <a href="https://amzn.to/4pyTfnv" target="_blank" class="bg-rose-500 text-white py-3 rounded-lg font-bold">Buy Now for ₹999</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-rose-100 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-sm font-semibold tracking-wide uppercase border border-rose-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        Bestseller of the Season
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-serif font-bold leading-tight text-slate-900">
+                        Redefine Your <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-purple-600">Everyday Elegance</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-lg">
+                        Experience the perfect blend of comfort and couture. Whether you're heading to a brunch or a casual evening out, this piece is designed to make you stand out effortlessly.
+                    </p>
+                    
+                    <div class="flex items-center gap-6">
+                        <div>
+                            <span class="text-4xl font-bold text-slate-900">₹999</span>
+                            <span class="text-lg text-slate-400 line-through ml-3">₹2,499</span>
+                        </div>
+                        <span class="text-green-600 text-sm font-bold bg-green-50 px-2 py-1 rounded">
+                            60% OFF Today
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://amzn.to/4pyTfnv" target="_blank" class="flex items-center justify-center gap-3 bg-rose-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-rose-700 transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                            Buy Now on Amazon
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        <a href="#gallery" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full text-slate-700 font-medium border border-slate-200 hover:bg-slate-50 transition">
+                            View Gallery
+                        </a>
+                    </div>
+                    
+                    <div class="flex gap-6 text-sm text-slate-500 pt-4">
+                        <div class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                            Fast Delivery
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                            Secure Payment
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            Top Rated
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Hero Image -->
+                <div class="order-1 lg:order-2 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                        <!-- REPLACE src below with your image filename (e.g. 'image1.jpg') -->
+                        <img src="71bqgo-cqeL._SY741_.jpg" alt="Elegant Front View" class="w-full h-[600px] object-cover hover:scale-105 transition duration-700">
+                        <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur px-5 py-3 rounded-2xl shadow-lg">
+                            <p class="font-serif font-bold text-slate-800">Premium Quality</p>
+                            <p class="text-xs text-slate-500">Verified by 1000+ Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY GRID SECTION -->
+    <section id="gallery" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">A Closer Look</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Swipe through the details. Notice the intricate stitching, the breathable fabric, and the flawless silhouette.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 2 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg bg-white h-96">
+                    <!-- REPLACE src below -->
+                    <img src="71c-7uoAmkL._SX569_.jpg" alt="Side Profile" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                </div>
+                <!-- Image 3 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg bg-white h-96">
+                    <!-- REPLACE src below -->
+                    <img src="71KzAm8m-TL._SY741_.jpg" alt="Close Up View" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                </div>
+                <!-- Image 4 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg bg-white h-96">
+                    <!-- REPLACE src below -->
+                    <img src="71cOklO6AnL._SY741_.jpg" alt="Back View" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                </div>
+                
+                <!-- Image 5 (Large Span) -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg bg-white h-96 lg:col-span-3">
+                    <!-- REPLACE src below -->
+                    <img src="71RkV3+d-4L._SY741_.jpg" alt="Lifestyle" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                     <div class="absolute bottom-6 left-6">
+                       <a href="https://amzn.to/4pyTfnv" target="_blank" class="bg-white text-slate-900 px-6 py-2 rounded-full font-bold shadow-lg hover:bg-rose-50 transition">
+                         Shop This Look
+                       </a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES / "GOOD THINGS" SECTION -->
+    <section id="details" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-serif font-bold text-slate-900">Why You Need This In Your Wardrobe</h2>
+                    <p class="text-lg text-slate-600">
+                        This isn't just a piece of clothing; it's an investment in your confidence. Designed with the modern lifestyle in mind, here is why our customers can't stop raving about it.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                                <svg class="text-rose-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">Premium Fabric</h3>
+                                <p class="text-slate-600">Soft-touch material that breathes with you, ensuring all-day comfort.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                                <svg class="text-rose-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">Versatile Styling</h3>
+                                <p class="text-slate-600">Dress it up with heels or keep it casual with sneakers. It works for every mood.</p>
+                            </div>
+                        </div>
+                         <!-- Feature 3 -->
+                         <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                                <svg class="text-rose-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">Perfect Fit</h3>
+                                <p class="text-slate-600">Tailored to flatter every body type with a silhouette that accentuates your best features.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8">
+                        <a href="https://amzn.to/4pyTfnv" target="_blank" class="inline-block bg-slate-900 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-slate-800 transition shadow-xl">
+                            Get Yours for Only ₹999
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-rose-50 rounded-3xl p-8 md:p-12 text-center border border-rose-100">
+                    <h3 id="reviews" class="text-2xl font-bold text-rose-900 mb-6">Limited Time Offer</h3>
+                    <div class="text-6xl font-black text-slate-900 mb-2">₹999</div>
+                    <p class="text-slate-500 mb-8 decoration-slate-400 line-through">Was ₹2,499</p>
+                    
+                    <p class="text-lg text-slate-700 mb-8 italic">
+                        "I absolutely love this! The fit is incredible and the fabric feels so expensive. Best purchase I've made this year."
+                    </p>
+                    <div class="flex justify-center gap-1 mb-2 text-yellow-400">
+                        ★★★★★
+                    </div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Verified Purchase</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-serif font-bold mb-6">StyleCart.</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="hover:text-rose-400 transition">Instagram</a>
+                <a href="#" class="hover:text-rose-400 transition">Facebook</a>
+                <a href="#" class="hover:text-rose-400 transition">Twitter</a>
+            </div>
+            <p class="text-slate-400 mb-8">
+                Elevating fashion, one outfit at a time.
+            </p>
+            <a href="https://amzn.to/4pyTfnv" target="_blank" class="text-rose-400 hover:text-rose-300 font-bold text-lg hover:underline">
+                Buy Now on Amazon
+            </a>
+            <div class="mt-12 text-slate-600 text-sm">
+                © 2024 StyleCart. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t p-4 md:hidden z-40 flex items-center justify-between shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div>
+            <p class="text-xs text-slate-500">Total Price</p>
+            <p class="text-xl font-bold text-slate-900">₹999</p>
+        </div>
+        <a href="https://amzn.to/4pyTfnv" target="_blank" class="bg-rose-600 text-white px-8 py-3 rounded-full font-bold shadow-lg">
+            Buy Now
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIONS -->
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-6');
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-6');
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
